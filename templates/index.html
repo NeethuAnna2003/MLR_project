@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🏡 House Price Prediction</h1>
+        <form method="POST">
+            <label>Square Footage:</label>
+            <input type="number" name="square_feet" required>
+
+            <label>Number of Bedrooms:</label>
+            <input type="number" name="bedrooms" required>
+
+            <label>Number of Bathrooms:</label>
+            <input type="number" name="bathrooms" required>
+
+            <label>Distance from City Center (km):</label>
+            <input type="number" name="distance" required>
+
+            <button type="submit">Predict Price</button>
+        </form>
+
+        {% if predicted_price is not none %}
+        <h2>Predicted Price: ₹{{ predicted_price | round(2) }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
